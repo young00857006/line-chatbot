@@ -53,22 +53,22 @@
       $("button1").click(function(){
         var obj = { "account": $("#Input").val(),"password": $("#Password").val()};
         $.ajax({
-            url: "http://localhost:8080/robot/login", 
+            url: "https://fd33-2001-b400-e35d-c79c-11c3-da4c-15ae-7181.jp.ngrok.i/robot/login", 
             dataType:"JSON",
             type: "POST",
             contentType:'application/json;charset=UTF-8',
             data:  JSON.stringify(obj),
             success: function(result){
-                if(result==true){
-                    function(){
-                        $.ajax({
-                            url: "http://localhost:8080/robot/sign", 
-                            dataType:"JSON",
-                            type: "GET",
-                            contentType:'application/json;charset=UTF-8'
-                        });
-                    }
-                }
+//                 if(result==true){
+//                     function(){
+//                         $.ajax({
+//                             url: "http://localhost:8080/robot/sign", 
+//                             dataType:"JSON",
+//                             type: "GET",
+//                             contentType:'application/json;charset=UTF-8'
+//                         });
+//                     }
+//                 }
             }
         });
       });
