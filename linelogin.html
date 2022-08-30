@@ -51,7 +51,12 @@
    
     $(document).ready(function(){
       $("button1").click(function(){
-        var obj = { "account": $("#Input").val(),"password": $("#Password").val()};
+        var getUrlString = location.href;
+        var url = new URL(getUrlString);
+        var linkToken = url.searchParams.get("linkToken");
+        var UserId = url.searchParams.get("UserId");
+
+        var obj = { "account": $("#Input").val(),"password": $("#Password").val(),"linkToken":linkToken,"UserId":UserId};
         $.ajax({
             url: "https://fd33-2001-b400-e35d-c79c-11c3-da4c-15ae-7181.jp.ngrok.io/robot/login", 
             dataType:"JSON",
