@@ -64,16 +64,8 @@
             contentType:'application/json;charset=UTF-8',
             data:  JSON.stringify(obj),
             success: function(result){
-//                 if(result==true){
-//                     function(){
-//                         $.ajax({
-//                             url: "http://localhost:8080/robot/sign", 
-//                             dataType:"JSON",
-//                             type: "GET",
-//                             contentType:'application/json;charset=UTF-8'
-//                         });
-//                     }
-//                 }
+               console.log(result);
+                window.location.replace(result);
             }
         });
       });
