@@ -59,7 +59,7 @@
         var obj = { "account": $("#Input").val(),"password": $("#Password").val()};
         $.ajax({
             url: "https://fd33-2001-b400-e35d-c79c-11c3-da4c-15ae-7181.jp.ngrok.io/robot/login?linkToken="+linkToken+"&UserId="+UserId, 
-            dataType:"JSON",
+     
             type: "POST",
             contentType:'application/json;charset=UTF-8',
             data:  JSON.stringify(obj),
