@@ -49,7 +49,7 @@ public class RobotController {
 			url = "https://access.line.me/dialog/bot/accountLink?linkToken="+linkToken+"&nonce="+encodedString;
 		}
 		else {
-			url = "https://young00857006.github.io/line-chatbot/linelogin.html?linkToken="+linkToken+"&UserId="+UserId;
+			url = "https://young00857006.github.io/line-chatbot/inputdata.html?linkToken="+linkToken+"&UserId="+UserId;
 		}
 		System.out.println(url);
 		return url;

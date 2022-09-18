@@ -56,14 +56,14 @@
    
     $(document).ready(function(){
       $("button1").click(function(){
-        
+        var getUrlString = location.href;
         var url = new URL(getUrlString);
         var linkToken = url.searchParams.get("linkToken");
         var UserId = url.searchParams.get("UserId");
 
         var obj = { "DeviceId": $("#DeviceId").val(),"url": $("#url").val(),"AccessToken": $("#AccessToken").val(),"address": $("#address").val()};
         $.ajax({
-            url: "https://3593-2001-b400-e359-6869-f41e-3465-cb96-36d4.jp.ngrok.io/robot/login?linkToken="+linkToken+"&UserId="+UserId, 
+            url: "https://1a76-2001-b400-e333-bac7-755a-e0d0-873d-9cb3.jp.ngrok.io/robot/login?linkToken="+linkToken+"&UserId="+UserId, 
      
             type: "POST",
             contentType:'application/json;charset=UTF-8',
