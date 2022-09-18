@@ -5,10 +5,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "member")
 public class Member {
-//    @Id
-    private String id;
-    private String DeviceId;
-    private String AccessToken;
+
+    private String deviceId;
+    private String accessToken;
     private String url;
     private String address;
     private String nonce;
@@ -17,29 +16,24 @@ public class Member {
     public Member(){}
 
     public Member(String DeviceId, String AccessToken, String url,String address,String nonce,String userId){
-        this.DeviceId = DeviceId;
-        this.AccessToken =AccessToken;
+        this.deviceId = DeviceId;
+        this.accessToken =AccessToken;
         this.url = url;
         this.address = address;
         this.nonce = nonce;
         this.userId = userId;
     }
 
-    public Member(String AccessToken, String url){
-        this.AccessToken = AccessToken;
-        this.url = url;
-    }
 
 
-    public void setId(String id) {
-        this.id = id;
-    }
+
+
 
     public void setDeviceId(String DeviceId){
-        this.DeviceId = DeviceId;
+        this.deviceId = DeviceId;
     }
     public void setAccessToken(String AccessToken){
-        this.AccessToken =AccessToken;
+        this.accessToken =AccessToken;
      }
      public void seturl(String url){
         this.url = url;
@@ -56,12 +50,12 @@ public class Member {
         this.userId = userId;
      }
 
-     public String getId(){return id;}
+
      public String getDeviceId(){
-        return DeviceId;
+        return deviceId;
      }
      public String getAccessToken(){
-        return AccessToken;
+        return accessToken;
      }
      public String geturl(){
         return url;
@@ -72,5 +66,17 @@ public class Member {
     }
      public String getUserId(){
         return userId;
+    }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+                "DeviceId='" + deviceId + '\'' +
+                ", AccessToken='" + accessToken + '\'' +
+                ", url='" + url + '\'' +
+                ", address='" + address + '\'' +
+                ", nonce='" + nonce + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
     }
 }
