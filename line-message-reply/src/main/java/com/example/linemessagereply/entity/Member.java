@@ -36,6 +36,7 @@ public class Member {
     }
 
     public void setName(String DeviceId){
+    public void setDeviceId(String DeviceId){
         this.DeviceId = DeviceId;
     }
     public void setAccessToken(String AccessToken){
