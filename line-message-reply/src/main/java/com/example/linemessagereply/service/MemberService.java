@@ -12,32 +12,34 @@ public class MemberService {
     @Autowired
     private MemberRepository repository;
 
-    public boolean insert(Member request){
-        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(),"","");
-        try {
-            repository.insert(member);
-            return true;
-        }
-        catch (Exception e){
-            System.out.println(e);
-            return false;
-        }
-
-    }
+//    public boolean insert(Member request){
+//        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(),"","");
+//        try {
+//            repository.insert(member);
+//            return true;
+//        }
+//        catch (Exception e){
+//            System.out.println(e);
+//            return false;
+//        }
+//
+//    }
 
     public boolean login(Member request){
         Member member = new Member(request.getDeviceId(), request.getAccessToken());
-        if(repository.findByDeviceIdAndAccessToken(member.getDeviceId(), member.getAccessToken()).isEmpty()){
-            System.out.println("false");
-            return false;
-        }
-        else{
-            return true;
-        }
+//        if(repository.findByDeviceIdAndAccessToken(member.getDeviceId(), member.getAccessToken()).isEmpty()){
+//            System.out.println("false");
+//            return false;
+//        }
+//        else{
+//            return true;
+//        }
+        return true;
     }
 
     public void lineAccountLink(Member request, String UserId, String nonce){
-        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(), request.getNonce(), request.getUserId());
+        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(),request.getAddress(), request.getNonce(), request.getUserId());
+        System.out.println(member);
         repository.save(member);
     }
 }

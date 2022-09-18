@@ -16,7 +16,7 @@ public class Member {
 
     public Member(){}
 
-    public Member(String DeviceId, String AccessToken, String url,String nonce,String userId){
+    public Member(String DeviceId, String AccessToken, String url,String address,String nonce,String userId){
         this.DeviceId = DeviceId;
         this.AccessToken =AccessToken;
         this.url = url;
@@ -35,7 +35,6 @@ public class Member {
         this.id = id;
     }
 
-    public void setName(String DeviceId){
     public void setDeviceId(String DeviceId){
         this.DeviceId = DeviceId;
     }

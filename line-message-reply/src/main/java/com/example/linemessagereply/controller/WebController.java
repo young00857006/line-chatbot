@@ -32,15 +32,15 @@ public class WebController {
 
     }
 
-    @PostMapping("/register")
-    public String register(@RequestBody Member request){
-        if(memberService.insert(request)) {
-            return "success";
-        }
-        else{
-            return "false";
-        }
-    }
+//    @PostMapping("/register")
+//    public String register(@RequestBody Member request){
+//        if(memberService.insert(request)) {
+//            return "success";
+//        }
+//        else{
+//            return "false";
+//        }
+//    }
 
     @PostMapping("/login")
     public boolean login(@RequestBody Member request){
