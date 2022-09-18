@@ -41,7 +41,6 @@ public class RobotController {
 
 	@PostMapping("/login")
 	public String login(@RequestBody Member request,@RequestParam("linkToken") String linkToken, @RequestParam("UserId") String UserId){
-		System.out.println(request);
 		String url="";
 
 		if(memberService.login(request)){

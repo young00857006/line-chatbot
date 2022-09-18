@@ -26,6 +26,10 @@ public class Member {
 
 
 
+    public Member(String deviceId, String accessToken){
+        this.deviceId = deviceId;
+        this.accessToken = accessToken;
+    }
 
 
 

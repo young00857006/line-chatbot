@@ -26,20 +26,17 @@ public class MemberService {
 //    }
 
     public boolean login(Member request){
-//        Member member = new Member(request.getDeviceId(), request.getAccessToken());
-//        if(repository.findByDeviceIdAndAccessToken(member.getDeviceId(), member.getAccessToken()).isEmpty()){
-//            System.out.println("false");
-//            return false;
-//        }
-//        else{
-//            return true;
-//        }
-        return true;
+        Member member = new Member(request.getDeviceId(), request.getAccessToken());
+        if(repository.findByDeviceIdAndAccessToken(member.getDeviceId(), member.getAccessToken()).isEmpty()){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public void lineAccountLink(Member request, String UserId, String nonce){
-        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(),request.getAddress(), request.getNonce(), request.getUserId());
-        System.out.println(member+"lineaccountlink");
+        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(),request.getAddress(), nonce, UserId);
         repository.save(member);
     }
 }
