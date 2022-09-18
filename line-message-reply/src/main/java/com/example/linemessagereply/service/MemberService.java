@@ -28,6 +28,7 @@ public class MemberService {
     public boolean login(Member request){
         Member member = new Member(request.getDeviceId(), request.getAccessToken());
         if(repository.findByDeviceIdAndAccessToken(member.getDeviceId(), member.getAccessToken()).isEmpty()){
+            System.out.println("false");
             return false;
         }
         else{

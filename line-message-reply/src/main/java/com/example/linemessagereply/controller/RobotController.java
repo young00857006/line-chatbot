@@ -40,8 +40,11 @@ public class RobotController {
 
 	@PostMapping("/login")
 	public String login(@RequestBody Member request,@RequestParam("linkToken") String linkToken, @RequestParam("UserId") String UserId){
+		System.out.println(request.getDeviceId());
 		String url="";
+
 		if(memberService.login(request)){
+			System.out.println("login");
 			System.out.println("綁定成功");
 			Base64 base64 = new Base64();
 			String encodedString = new String(base64.encode(UserId.getBytes()));

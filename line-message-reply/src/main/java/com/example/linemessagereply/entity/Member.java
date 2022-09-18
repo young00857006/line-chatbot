@@ -5,11 +5,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "member")
 public class Member {
-    @Id
+//    @Id
     private String id;
     private String DeviceId;
     private String AccessToken;
     private String url;
+    private String address;
     private String nonce;
     private String userId;
 
@@ -19,6 +20,7 @@ public class Member {
         this.DeviceId = DeviceId;
         this.AccessToken =AccessToken;
         this.url = url;
+        this.address = address;
         this.nonce = nonce;
         this.userId = userId;
     }
@@ -42,7 +44,12 @@ public class Member {
      public void seturl(String url){
         this.url = url;
      }
-     public void setNonce(String nonce){
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setNonce(String nonce){
         this.nonce = nonce;
      }
      public void  setUserId(String userId){
@@ -59,6 +66,7 @@ public class Member {
      public String geturl(){
         return url;
      }
+     public String getAddress(){return address;}
      public String getNonce(){
         return  nonce;
     }

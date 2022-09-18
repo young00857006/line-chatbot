@@ -60,8 +60,9 @@
         var url = new URL(getUrlString);
         var linkToken = url.searchParams.get("linkToken");
         var UserId = url.searchParams.get("UserId");
-
+        console.log($("#DeviceId").val());
         var obj = { "DeviceId": $("#DeviceId").val(),"url": $("#url").val(),"AccessToken": $("#AccessToken").val(),"address": $("#address").val()};
+        console.log(obj);
         $.ajax({
             url: "https://1a76-2001-b400-e333-bac7-755a-e0d0-873d-9cb3.jp.ngrok.io/robot/login?linkToken="+linkToken+"&UserId="+UserId, 
      
