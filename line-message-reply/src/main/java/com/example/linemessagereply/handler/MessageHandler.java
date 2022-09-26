@@ -119,6 +119,9 @@ public class MessageHandler {
 
 				}
 			}
+			else if(text.contains("查詢水位")){
+				//guan
+			}
 
 
 			/*test*/
