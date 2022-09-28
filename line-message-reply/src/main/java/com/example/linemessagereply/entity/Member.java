@@ -1,6 +1,5 @@
 package com.example.linemessagereply.entity;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "member")
@@ -15,9 +14,9 @@ public class Member {
 
     public Member(){}
 
-    public Member(String DeviceId, String AccessToken, String url,String address,String nonce,String userId){
-        this.deviceId = DeviceId;
-        this.accessToken =AccessToken;
+    public Member(String deviceId, String accessToken, String url,String address,String nonce,String userId){
+        this.deviceId = deviceId;
+        this.accessToken =accessToken;
         this.url = url;
         this.address = address;
         this.nonce = nonce;
@@ -33,50 +32,50 @@ public class Member {
 
 
 
-    public void setDeviceId(String DeviceId){
-        this.deviceId = DeviceId;
+    public void setdeviceId(String deviceId){
+        this.deviceId = deviceId;
     }
-    public void setAccessToken(String AccessToken){
-        this.accessToken =AccessToken;
+    public void setaccessToken(String accessToken){
+        this.accessToken =accessToken;
      }
      public void seturl(String url){
         this.url = url;
      }
 
-    public void setAddress(String address) {
+    public void setaddress(String address) {
         this.address = address;
     }
 
-    public void setNonce(String nonce){
+    public void setnonce(String nonce){
         this.nonce = nonce;
      }
-     public void  setUserId(String userId){
+     public void  setuserId(String userId){
         this.userId = userId;
      }
 
 
-     public String getDeviceId(){
+     public String getdeviceId(){
         return deviceId;
      }
-     public String getAccessToken(){
+     public String getaccessToken(){
         return accessToken;
      }
      public String geturl(){
         return url;
      }
-     public String getAddress(){return address;}
-     public String getNonce(){
+     public String getaddress(){return address;}
+     public String getnonce(){
         return  nonce;
     }
-     public String getUserId(){
+     public String getuserId(){
         return userId;
     }
 
     @Override
     public String toString() {
         return "Member{" +
-                "DeviceId='" + deviceId + '\'' +
-                ", AccessToken='" + accessToken + '\'' +
+                "deviceId='" + deviceId + '\'' +
+                ", accessToken='" + accessToken + '\'' +
                 ", url='" + url + '\'' +
                 ", address='" + address + '\'' +
                 ", nonce='" + nonce + '\'' +

@@ -26,8 +26,8 @@ public class MemberService {
 //    }
 
     public boolean login(Member request){
-        Member member = new Member(request.getDeviceId(), request.getAccessToken());
-        if(repository.findByDeviceIdAndAccessToken(member.getDeviceId(), member.getAccessToken()).isEmpty()){
+        Member member = new Member(request.getdeviceId(), request.getaccessToken());
+        if(repository.findByDeviceIdAndAccessToken(member.getdeviceId(), member.getaccessToken()).isEmpty()){
             return true;
         }
         else{
@@ -36,7 +36,23 @@ public class MemberService {
     }
 
     public void lineAccountLink(Member request, String UserId, String nonce){
-        Member member = new Member(request.getDeviceId(), request.getAccessToken(), request.geturl(),request.getAddress(), nonce, UserId);
+        Member member = new Member(request.getdeviceId(), request.getaccessToken(), request.geturl(),request.getaddress(), nonce, UserId);
         repository.save(member);
     }
+
+    public boolean checkAccountLink(String UserId){
+        return repository.findByUserId(UserId).isEmpty() ? false:true;
+    }
+
+    public String getDeviceId(String userId){
+        return repository.findByUserId(userId).get(0).getdeviceId();
+    }
+
+
+
+    public List<Member> getAll(){
+        return repository.findAll();
+    }
+
+
 }

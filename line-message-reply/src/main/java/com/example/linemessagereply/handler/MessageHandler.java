@@ -1,10 +1,15 @@
 package com.example.linemessagereply.handler;
 
 import com.example.linemessagereply.entity.Member;
+import com.example.linemessagereply.entity.Sensor;
 import com.example.linemessagereply.entity.WaterQuality;
+import com.example.linemessagereply.ideachain.GetApi;
 import com.example.linemessagereply.reppository.MemberRepository;
 import com.example.linemessagereply.reppository.WaterQualityRepository;
+import com.example.linemessagereply.service.MemberService;
 import okhttp3.*;
+import org.apache.catalina.User;
+import org.apache.logging.log4j.message.Message;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,7 +35,7 @@ public class MessageHandler {
 	@Autowired
 	private WaterQualityRepository WaterQualityrepo;
 	@Autowired
-	private MemberRepository Memberrepo;
+	private MemberService MemberService;
 
 	public void doAction(JSONObject event) {
 		doAction(this.messageListener, event);
@@ -71,12 +76,6 @@ public class MessageHandler {
 			// TODO Auto-generated method stub
 			System.out.printf("%s\t%s\n", replyToken, "video");
 		}
-//		@Override
-//		public void text(String replyToken, String text, String UserId){
-//			if(text.contains("綁定裝置")){
-//
-//			}
-//		}
 
 		@Override
 		public void text(String replyToken, String text, String UserId){
@@ -119,10 +118,48 @@ public class MessageHandler {
 
 				}
 			}
-			else if(text.contains("查詢水位")){
-				//guan
-			}
+			else if(MemberService.checkAccountLink(UserId)){//check if member is exist
 
+				GetApi getApi = new GetApi(MemberService.getDeviceId(UserId));
+				Sensor sensor = getApi.getSensor();
+				String message = "";
+				if(text.contains("水位")){
+					message += "水位："+sensor.getLevel();
+				}
+				else if(text.contains("水質")){
+					if(Float.parseFloat(sensor.getTds())>=500){
+						message += "水質 混濁！！！";
+					}
+					else if(Float.parseFloat(sensor.getTds())<200){
+						message += "水質 適中";
+					}
+					else{
+						message += "水質 乾淨";
+					}
+
+				}
+				else if(text.contains("溫度")){
+					message += "溫度："+sensor.getTemp() + "ºc";
+				}
+				else if(text.contains("紫外線")){
+					if(Float.parseFloat(sensor.getUVlevel())>795){
+						message += "紫外光 危險！！！";
+					}
+					else if(Float.parseFloat(sensor.getUVlevel())<318){
+						message += "紫外線 適中";
+					}
+					else{
+						message += "紫外線 安全";
+					}
+				}
+				else if(text.contains("濕度")){
+					message += "濕度："+sensor.getHumd() + "%";
+				}
+
+
+				LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[]{new TextMessage(message), new TextMessage("檢測時間："+sensor.getDate())}));//sensor.getNameValue()為訊息的內容
+
+			}
 
 			/*test*/
 //			else if(text.contains("水質")){

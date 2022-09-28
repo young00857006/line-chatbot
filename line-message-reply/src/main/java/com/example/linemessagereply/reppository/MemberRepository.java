@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface MemberRepository extends MongoRepository<Member, String> {
 
-    List<Member> findByDeviceIdAndAccessToken(String DeviceId, String AccessToken);
-    List<Member> findByUserId(String UserId);
+    List<Member> findByDeviceIdAndAccessToken(String deviceId, String accessToken);
+    List<Member> findByUserId(String userId);
+
 }

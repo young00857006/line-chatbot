@@ -57,13 +57,6 @@ public class RobotController {
 		return url;
 	}
 
-//	@GetMapping ("/sign")
-//	public RedirectView redirect(@RequestParam("linkToken") String linkToken, @RequestParam("UserId") String UserId){
-//		Base64 base64 = new Base64();
-//		String encodedString = new String(base64.encode(UserId.getBytes()));
-//		String url = "https://access.line.me/dialog/bot/accountLink?linkToken="+linkToken+"&nonce="+encodedString;
-//		return new RedirectView(url);
-//	}
 
 	@PostMapping("/messaging")
 	public ResponseEntity<String> messagingAPI(@RequestHeader("x-line-signature") String X_Line_Signature, @RequestBody String requestBody) throws UnsupportedEncodingException, IOException{
