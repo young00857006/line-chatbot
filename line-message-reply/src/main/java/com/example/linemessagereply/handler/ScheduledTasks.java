@@ -17,10 +17,9 @@ public class ScheduledTasks {
 //    }
     @Autowired private AnnounceService announceService;
 
-//    @Scheduled(cron = "0 0/1 * * * ?") // cron接受cron表示式，根據cron表示式確定定時規則
-//    public void testCron() {
-//
-//        announceService.daily();
-//    }
+    @Scheduled(cron = "0 0/1 * * * ?") // cron接受cron表示式，根據cron表示式確定定時規則
+    public void Cron() {
+        announceService.daily();
+    }
 
 }

@@ -19,17 +19,15 @@ public class AnnounceService {
     @Autowired
     private MemberService memberService;
 
-    public void daily(){
+    public void daily(){ //announce uv, temp, hum
         for(Member i :memberService.getAll()){
 
             GetApi test = new GetApi(i.getdeviceId());
             Sensor sensor = test.getSensor();
 
-//
             final LineMessagingClient client = LineMessagingClient
                     .builder("aGLSAm6glSjuEZejBncJkwh1C2YAQCivBnHkwtq+JDh1pgEeYP/fnuk/L44zWMZAs7XpceyBlpzopMEIywUJA3Q1tEnkXOOzk4gr/Ncxffs4NP/K91qvi1vSEHga+Lt2L4P9kmx3ICRE0FNt6Tm94gdB04t89/1O/w1cDnyilFU=")
                     .build();
-
             final TextMessage textMessage = new TextMessage(sensor.toString());
             final PushMessage pushMessage = new PushMessage(
                     i.getuserId(),

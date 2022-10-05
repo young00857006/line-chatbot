@@ -155,10 +155,13 @@ public class MessageHandler {
 				else if(text.contains("濕度")){
 					message += "濕度："+sensor.getHumd() + "%";
 				}
-
-
-				LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[]{new TextMessage(message), new TextMessage("檢測時間："+sensor.getDate())}));//sensor.getNameValue()為訊息的內容
-
+				if(text.contains("網址")){
+					message = MemberService.getUrl(UserId);
+					LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[]{new TextMessage(message)}));
+				}
+				else {
+					LineConnector.getInstance().replyMessage(LINE_TOKEN, new ReplyMessage(replyToken, new BaseMessage[]{new TextMessage(message), new TextMessage("檢測時間：" + sensor.getDate())}));//sensor.getNameValue()為訊息的內容
+				}
 			}
 
 			/*test*/

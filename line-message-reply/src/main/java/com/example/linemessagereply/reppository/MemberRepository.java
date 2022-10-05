@@ -11,4 +11,5 @@ public interface MemberRepository extends MongoRepository<Member, String> {
     List<Member> findByDeviceIdAndAccessToken(String deviceId, String accessToken);
     List<Member> findByUserId(String userId);
 
+    boolean deleteByUserId(String userId);
 }

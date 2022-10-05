@@ -47,7 +47,7 @@ public class analyzemain {
 //        for(Member i :memberService.getAll()){
 //            System.out.println(i.toString() + "\n");
 //        }
-
+//
 //            GetApi test = new GetApi(member.getDeviceId());
 //            Sensor sensor = test.getSensor();
 //

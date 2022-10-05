@@ -34,15 +34,26 @@ public class WebController {
 
     }
 
-//    @PostMapping("/register")
-//    public String register(@RequestBody Member request){
-//        if(memberService.insert(request)) {
-//            return "success";
-//        }
-//        else{
-//            return "false";
-//        }
-//    }
+    @GetMapping("/member")
+    public List<Member> getAllMember(){
+        return memberService.getAll();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deletMember(@PathVariable("id") String userId){
+        memberService.deleteMember(userId);
+    }
+
+    @PostMapping("/supervisorlogin")
+    public boolean supervisorloginlogin(@RequestParam String account, @RequestParam String password){
+        System.out.println(account + password);
+        return account.contentEquals("super")&&password.contentEquals("super") ? true : false;
+    }
+
+    @PostMapping("/update")
+    public void replaceMember(@RequestBody Member member){
+        memberService.replaceMember(member);
+    }
 
     @PostMapping("/login")
     public boolean login(@RequestBody Member request){

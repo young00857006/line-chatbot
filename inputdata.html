@@ -64,10 +64,10 @@
         var obj = { "deviceId": $("#DeviceId").val(),"accessToken": $("#AccessToken").val(),"url": $("#url").val(),"address": $("#address").val()};
         console.log(obj);
         $.ajax({
-            url: "https://linechatbot-ntouiot.herokuapp.com/robot/login?linkToken="+linkToken+"&UserId="+UserId, 
+            url: "https://linechatbot-ntouiot.herokuapp.com/robot/login?linkToken="+linkToken+"&UserId="+UserId, // ?="value" is RequestParam; /"value" is Pathvariable
             type: "POST",
             contentType:'application/json;charset=UTF-8',
-            data:  JSON.stringify(obj),
+            data:  JSON.stringify(obj),//RequestBody
             success: function(result){
                 console.log(result);
                 window.location.replace(result);

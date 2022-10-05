@@ -1,10 +1,12 @@
 package com.example.linemessagereply.entity;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "member")
 public class Member {
-
+    @Id
+    private String id;
     private String deviceId;
     private String accessToken;
     private String url;
@@ -13,6 +15,16 @@ public class Member {
     private String userId;
 
     public Member(){}
+
+    public Member(String id, String deviceId, String accessToken, String url,String address,String nonce,String userId){
+        this.id = id;
+        this.deviceId = deviceId;
+        this.accessToken =accessToken;
+        this.url = url;
+        this.address = address;
+        this.nonce = nonce;
+        this.userId = userId;
+    }
 
     public Member(String deviceId, String accessToken, String url,String address,String nonce,String userId){
         this.deviceId = deviceId;
@@ -31,6 +43,9 @@ public class Member {
     }
 
 
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public void setdeviceId(String deviceId){
         this.deviceId = deviceId;
@@ -41,11 +56,9 @@ public class Member {
      public void seturl(String url){
         this.url = url;
      }
-
     public void setaddress(String address) {
         this.address = address;
     }
-
     public void setnonce(String nonce){
         this.nonce = nonce;
      }
@@ -53,8 +66,11 @@ public class Member {
         this.userId = userId;
      }
 
+    public String getId() {
+        return id;
+    }
 
-     public String getdeviceId(){
+    public String getdeviceId(){
         return deviceId;
      }
      public String getaccessToken(){
@@ -74,7 +90,8 @@ public class Member {
     @Override
     public String toString() {
         return "Member{" +
-                "deviceId='" + deviceId + '\'' +
+                "id='" + id + '\'' +
+                ", deviceId='" + deviceId + '\'' +
                 ", accessToken='" + accessToken + '\'' +
                 ", url='" + url + '\'' +
                 ", address='" + address + '\'' +

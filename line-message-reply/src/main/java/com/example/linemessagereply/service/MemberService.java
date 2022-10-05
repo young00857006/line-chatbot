@@ -35,6 +35,10 @@ public class MemberService {
         }
     }
 
+//    public void deleteMember(String id) {
+//        repository.deleteByuserId(id);
+//    }
+
     public void lineAccountLink(Member request, String UserId, String nonce){
         Member member = new Member(request.getdeviceId(), request.getaccessToken(), request.geturl(),request.getaddress(), nonce, UserId);
         repository.save(member);
@@ -47,11 +51,21 @@ public class MemberService {
     public String getDeviceId(String userId){
         return repository.findByUserId(userId).get(0).getdeviceId();
     }
-
-
-
+    public String getUrl(String userId){
+        return repository.findByUserId(userId).get(0).geturl();
+    }
+    public boolean deleteMember(String userId){
+        System.out.println("1");
+        return repository.deleteByUserId(userId);
+    }
     public List<Member> getAll(){
         return repository.findAll();
+    }
+    public void replaceMember(Member request){
+//        Member member = new Member(request.getdeviceId(), request.getaccessToken(), request.geturl(),request.getaddress(), request.getnonce(), request.getuserId());
+        Member oldMember = repository.findByUserId(request.getuserId()).get(0);
+        Member newMember = new Member(oldMember.getId(), request.getdeviceId(),request.getaccessToken(),request.geturl(),request.getaddress(),request.getnonce(),request.getuserId());
+        repository.save(newMember);
     }
 
 
