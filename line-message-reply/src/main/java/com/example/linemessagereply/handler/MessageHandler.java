@@ -1,15 +1,9 @@
 package com.example.linemessagereply.handler;
 
-import com.example.linemessagereply.entity.Member;
 import com.example.linemessagereply.entity.Sensor;
-import com.example.linemessagereply.entity.WaterQuality;
 import com.example.linemessagereply.ideachain.GetApi;
-import com.example.linemessagereply.reppository.MemberRepository;
-import com.example.linemessagereply.reppository.WaterQualityRepository;
 import com.example.linemessagereply.service.MemberService;
 import okhttp3.*;
-import org.apache.catalina.User;
-import org.apache.logging.log4j.message.Message;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,9 +16,6 @@ import line.robot.message_object.StickerMessage;
 import line.robot.message_object.TextMessage;
 import line.robot.message_object.api.ReplyMessage;
 import line.robot.message_object.http.LineConnector;
-import com.linecorp.bot.model.response.IssueLinkTokenResponse;
-
-import java.io.IOException;
 
 @Component
 public class MessageHandler {
@@ -32,8 +23,6 @@ public class MessageHandler {
 	@Value("aGLSAm6glSjuEZejBncJkwh1C2YAQCivBnHkwtq+JDh1pgEeYP/fnuk/L44zWMZAs7XpceyBlpzopMEIywUJA3Q1tEnkXOOzk4gr/Ncxffs4NP/K91qvi1vSEHga+Lt2L4P9kmx3ICRE0FNt6Tm94gdB04t89/1O/w1cDnyilFU=")
 	private String LINE_TOKEN;
 
-	@Autowired
-	private WaterQualityRepository WaterQualityrepo;
 	@Autowired
 	private MemberService MemberService;
 

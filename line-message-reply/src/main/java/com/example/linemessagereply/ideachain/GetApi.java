@@ -52,8 +52,8 @@ public class GetApi {
             Response response2 = client2.newCall(request2).execute();
             JSONObject j = new JSONObject(response2.body().string());
             sensors = new ArrayList<>();
+
             for (int i = 0; i < 3; i++) {
-                System.out.println();
                 JSONObject level = new JSONObject(j.getJSONArray("level").get(i).toString());
                 JSONObject tds = new JSONObject(j.getJSONArray("tds").get(i).toString());
                 JSONObject temp = new JSONObject(j.getJSONArray("temp").get(i).toString());
@@ -63,11 +63,6 @@ public class GetApi {
                 Sensor sensor = new Sensor(level.get("value").toString(), tds.get("value").toString(),temp.get("value").toString(),UVlevel.get("value").toString(),humd.get("value").toString(),jsonOb_Time.toString(),deviceId );
                 System.out.println(sensor);
                 sensors.add(sensor);
-//                Object jsonOb_Time = j2.get("ts");
-//                long ms = (long) jsonOb_Time / 1000;
-//                String date = new java.text.SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new java.util.Date(ms * 1000));
-//                System.out.println(date + " 所測得" + key + "數據為: " + jsonOb2);
-                //System.out.println(jsonOb2);
             }
         }
         catch (Exception e) {

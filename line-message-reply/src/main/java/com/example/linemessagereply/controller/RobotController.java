@@ -9,8 +9,6 @@ import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
 
 import com.example.linemessagereply.entity.Member;
-import com.example.linemessagereply.entity.WaterQuality;
-import com.example.linemessagereply.reppository.WaterQualityRepository;
 import com.example.linemessagereply.service.MemberService;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.json.JSONObject;
@@ -22,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 
 
 import com.example.linemessagereply.handler.MessageHandler;
-import org.springframework.web.servlet.view.RedirectView;
 
 
 @RequestMapping("/robot")
@@ -33,8 +30,7 @@ public class RobotController {
 	private String LINE_SECRET;
 	@Autowired
 	private MessageHandler messageHandler;
-	@Autowired
-	private WaterQualityRepository WaterQualityrepo;
+
 	@Autowired
 	private MemberService memberService;
 
