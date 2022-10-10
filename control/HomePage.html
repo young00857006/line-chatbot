@@ -40,14 +40,14 @@
     $(document).ready(function () {
         $("button1").click(function () {
             var settings = {
-                "url": "http://localhost:8080/web/supervisorlogin?account=" + $("#sId").val() + "&password=" + $("#sP").val() + "",
+                "url": "https://linechatbot-ntouiot.herokuapp.com/web/supervisorlogin?account=" + $("#sId").val() + "&password=" + $("#sP").val() + "",
                 "method": "POST",
                 "timeout": 0,
             };
 
             $.ajax(settings).done(function (response) {
                 if (response == true) {
-                    window.location.replace("store.html");
+                    window.location.replace("https://young00857006.github.io/line-chatbot/control/store.html");
                 }
                 else {
                     console.log("error");
