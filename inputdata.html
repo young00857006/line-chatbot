@@ -28,14 +28,17 @@
                 <input type="email" class="form-control" id="DeviceId" placeholder="Device Id">
                 </br>
                 <label>儀表板連結</label>
-                <input type="password" class="form-control" id="url" placeholder="URL">
+                <input type="url" class="form-control" id="url" placeholder="URL">
                 </br>
                 <label>Access token</label>
                 <input type="access_token" class="form-control" id="AccessToken" placeholder="Access token">
                 </br>
                 <label>用戶住址</label>
                 <input type="address" class="form-control" id="address" placeholder="用戶住址">
-
+                </br>
+                <label>經緯度</label>
+                <input type="lat" class="form-control" id="lat" placeholder="經度">
+                <input type="lng" class="form-control" id="lng" placeholder="緯度">
                 <br />
                 <div style="width: 48rem;">
                     <button1 class="btn btn-lg btn-primary" type="submit">資料送出</button1>
@@ -46,37 +49,52 @@
         </div>
     </div>
 
-
-
-
-
 </body>
 <script>
-   
-   
-    $(document).ready(function(){
-      $("button1").click(function(){
-        var getUrlString = location.href;
-        var url = new URL(getUrlString);
-        var linkToken = url.searchParams.get("linkToken");
-        var UserId = url.searchParams.get("UserId");
-        console.log($("#DeviceId").val());
-        var obj = { "deviceId": $("#DeviceId").val(),"accessToken": $("#AccessToken").val(),"url": $("#url").val(),"address": $("#address").val()};
-        console.log(obj);
-        $.ajax({
-            url: "https://linechatbot-ntouiot.herokuapp.com/robot/login?linkToken="+linkToken+"&UserId="+UserId, // ?="value" is RequestParam; /"value" is Pathvariable
-            type: "POST",
-            contentType:'application/json;charset=UTF-8',
-            data:  JSON.stringify(obj),//RequestBody
-            success: function(result){
-                console.log(result);
-                window.location.replace(result);
-            }
+
+
+    $(document).ready(function () {
+        $("button1").click(function () {
+            var getUrlString = location.href;
+            var url = new URL(getUrlString);
+            var linkToken = url.searchParams.get("linkToken");
+            var UserId = url.searchParams.get("UserId");
+            console.log($("#DeviceId").val());
+            var obj = { "deviceId": $("#DeviceId").val(), "accessToken": $("#AccessToken").val(), "url": $("#url").val(), "address": $("#address").val() };
+            console.log(obj);
+            $.ajax({
+                url: "https://linechatbot-ntouiot.herokuapp.com/robot/login?linkToken=" + linkToken + "&UserId=" + UserId, // ?="value" is RequestParam; /"value" is Pathvariable
+                type: "POST",
+                contentType: 'application/json;charset=UTF-8',
+                data: JSON.stringify(obj),//RequestBody
+                success: function (result) {
+                    console.log(result);
+                    window.location.replace(result);
+                }
+            });
+            //set latc and lng on ideaschain
+            var settings = {
+                "url": "https://iiot.ideaschain.com.tw/api/v1/" + $("#AccessToken").val() + "/attributes",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "data": JSON.stringify({
+                    "lat": $("#lat").val(),
+                    "lng": $("#lng").val()
+                }),
+            };
+
+            $.ajax(settings).done(function (response) {
+                console.log(response);
+                console.log($("#lat").val());
+                console.log($("#lng").val());
+            });
         });
-      });
     });
 
-    
+
 </script>
 
 </html>
