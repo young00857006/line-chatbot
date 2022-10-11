@@ -81,7 +81,7 @@
                 <!-- <input type="lat" class="form-control" id="lat" placeholder="經度">
                 <input type="lng" class="form-control" id="lng" placeholder="緯度"> -->
                 <input type="text" name="lat" id="lat" size=12 value="" placeholder="經度">
-                <input type="text" name="lon" id="lng" size=12 value="" placeholder="緯度">
+                <input type="text" name="lon" id="lon" size=12 value="" placeholder="緯度">
                 <br />
                 <div style="width: 48rem;">
                     <button1 class="btn btn-lg btn-primary" type="submit">資料送出</button1>
@@ -147,14 +147,14 @@
                 },
                 "data": JSON.stringify({
                     "lat": $("#lat").val(),
-                    "lng": $("#lng").val()
+                    "lng": $("#lon").val()
                 }),
             };
 
             $.ajax(settings).done(function (response) {
                 console.log(response);
                 console.log($("#lat").val());
-                console.log($("#lng").val());
+                console.log($("#lon").val());
             });
         });
     });
