@@ -51,7 +51,7 @@ public class ScheduledTasks {
 //            announceService.checkUV(i.getuserId(), i.getdeviceId());
 //        }
 //    }
-//
+
 //    @Scheduled(cron = "0 0 * * * *") // cron接受cron表示式，根據cron表示式確定定時規則
 //    public void Cron() {
 //        for(Member i : memberService.getAll()){
