@@ -183,11 +183,11 @@
 					var click_item = $(e.target).parents("tr").children('td');
 					console.log("in_dd2");
 					var settings = {
-						"url": "https://linechatbot-ntouiot.herokuapp.com/web/delete/" + click_item.eq(0).text() + "",
+						"url": "https://1e9e-2001-b400-e350-aab0-ad7b-273-a6b-1c5b.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
 						"method": "DELETE",
 						"timeout": 0,
 					};
-					console.log("https://linechatbot-ntouiot.herokuapp.com/web/delete/" + click_item.eq(0).text() + "");
+					console.log("https://1e9e-2001-b400-e350-aab0-ad7b-273-a6b-1c5b.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "");
 					$.ajax(settings).done(function (response) {
 						console.log(response);
 					});
@@ -199,7 +199,7 @@
 	function delete_funiture() {
 		window.alert(click_item.eq(0).text());
 		var settings = {
-			"url": "https://linechatbot-ntouiot.herokuapp.com/web/delete/" + click_item.eq(0).text() + "",
+			"url": "https://1e9e-2001-b400-e350-aab0-ad7b-273-a6b-1c5b.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
 			"method": "DELETE",
 			"timeout": 0,
 		};
@@ -213,7 +213,7 @@
 		console.log("edit");
 		//console.log(click_item.parents("tr")[0].id);
 		var settings = {
-			"url": "https://linechatbot-ntouiot.herokuapp.com/web/update",
+			"url": "https://1e9e-2001-b400-e350-aab0-ad7b-273-a6b-1c5b.jp.ngrok.io/web/update",
 			"method": "POST",
 			"timeout": 0,
 			"headers": {
