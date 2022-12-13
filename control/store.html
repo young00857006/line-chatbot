@@ -133,7 +133,7 @@
 <script>
 	function show_all_funiture() {
 		var Merchant = sessionStorage.getItem('Merchant');
-		var url = "https://1770-2001-b400-e350-aab0-b8df-7750-5196-88f7.jp.ngrok.io/web/member";
+		var url = "https://faaf-114-36-252-10.jp.ngrok.io/web/member";
 		$("#Merchant_list").html("");
 		$.getJSON(url, function (result) {
 
@@ -183,7 +183,7 @@
 					var click_item = $(e.target).parents("tr").children('td');
 					console.log("in_dd2");
 					var settings = {
-						"url": "https://1770-2001-b400-e350-aab0-b8df-7750-5196-88f7.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
+						"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
 						"method": "DELETE",
 						"timeout": 0,
 					};
@@ -199,7 +199,7 @@
 	function delete_funiture() {
 		window.alert(click_item.eq(0).text());
 		var settings = {
-			"url": "https://1770-2001-b400-e350-aab0-b8df-7750-5196-88f7.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
+			"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
 			"method": "DELETE",
 			"timeout": 0,
 		};
@@ -213,7 +213,7 @@
 		console.log("edit");
 		//console.log(click_item.parents("tr")[0].id);
 		var settings = {
-			"url": "https://1770-2001-b400-e350-aab0-b8df-7750-5196-88f7.jp.ngrok.io/web/update",
+			"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/update",
 			"method": "POST",
 			"timeout": 0,
 			"headers": {
