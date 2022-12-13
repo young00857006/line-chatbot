@@ -136,7 +136,7 @@
 		var url = "https://faaf-114-36-252-10.jp.ngrok.io/web/member";
 		$("#Merchant_list").html("");
 		$.ajax({
-			url: "URL",
+			url: url,
 			type: "GET",
 			dataType: "json",
 			success: function(result) {
@@ -190,7 +190,7 @@
 						"method": "DELETE",
 						"timeout": 0,
 					};
-					console.log("https://1770-2001-b400-e350-aab0-b8df-7750-5196-88f7.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "");
+					console.log("https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "");
 					$.ajax(settings).done(function (response) {
 						console.log(response);
 					});
