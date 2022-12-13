@@ -139,6 +139,9 @@
 			url: url,
 			type: "GET",
 			dataType: "json",
+			headers: {
+				'Access-Control-Allow-Origin': '*'
+			},
 			success: function(result) {
 			    $.each(result, function (index, value) {
 				console.log(index, value);
