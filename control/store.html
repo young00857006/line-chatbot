@@ -138,9 +138,7 @@
 		$.ajax({
 			url: url,
 			type: "GET",
-// 			dataType: "json",
-			crossDomain: true,
-    			dataType: 'jsonp',
+			dataType: "json",
 			success: function(result) {
 			    $.each(result, function (index, value) {
 				console.log(index, value);
