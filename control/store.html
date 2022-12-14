@@ -247,7 +247,7 @@
 					var click_item = $(e.target).parents("tr").children('td');
 					console.log("in_dd2");
 					var settings = {
-						"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
+						"url": "https://nbiotwater.herokuapp.com/web/delete/" + click_item.eq(0).text() + "",
 						"method": "DELETE",
 						"timeout": 0,
 					};
@@ -263,7 +263,7 @@
 	function delete_funiture() {
 		window.alert(click_item.eq(0).text());
 		var settings = {
-			"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
+			"url": "https://nbiotwater.herokuapp.com/web/delete/" + click_item.eq(0).text() + "",
 			"method": "DELETE",
 			"timeout": 0,
 		};
@@ -277,7 +277,7 @@
 		console.log("edit");
 		//console.log(click_item.parents("tr")[0].id);
 		var settings = {
-			"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/update",
+			"url": "https://nbiotwater.herokuapp.com/web/update",
 			"method": "POST",
 			"timeout": 0,
 			"headers": {
