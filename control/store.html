@@ -135,73 +135,12 @@
 		var Merchant = sessionStorage.getItem('Merchant');
 		var url = "https://nbiotwater.herokuapp.com/web/member";
 		$("#Merchant_list").html("");
-		$.ajax({
-			url: url,
-			type: "GET",
-			dataType: "json",
-			success: function(result) {
-			    $.each(result, function (index, value) {
-				console.log(index, value);
-				var insertHTML = "";
-				insertHTML += `
-					<tr>
-						<td>`+ value.userId + `</td>
-						<td>`+ value.deviceId + `</td>
-						<td>`+ value.address + `</td>
-						<td>`+ value.url + `</td>
-						<td>`+ value.accessToken + `</td>
-						
-						<td>
-							<a id="swe" href="#editEmployeeModal" class="edit" data-toggle="modal"><i
-								class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
-								class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-						</td>
-					</tr>`
-					;
-				$("#Merchant_list").append(insertHTML);
-			});
-			//編輯
-			$(".edit").click(function (e) {
-				var click_item = $(e.target).parents("tr").children('td');
-				console.log("in_ed");
-
-				$("#edit_u_id").val(click_item.eq(0).text());
-				$("#edit_d_id").val(click_item.eq(1).text());
-				$("#edit_address").val(click_item.eq(2).text());
-				$("#edit_url").val(click_item.eq(3).text());
-				$("#edit_name").val(click_item.eq(4).text());
-				//$("#edit_site").val(click_item.eq(5).text());
-				$.each(click_item.parents("td"), function (index, value) {
-					console.log(value.text());
-				});
-				$("#edit_save_btn").click(function () {
-					edit_funiture(click_item);
-				});
-			});
-			//刪除
-			$(".delete").click(function (e) {
-				console.log("in_dd");
-				$("#delete_confirm_btn").click(function () {
-					var click_item = $(e.target).parents("tr").children('td');
-					console.log("in_dd2");
-					var settings = {
-						"url": "https://nbiotwater.herokuapp.com/web/delete/" + click_item.eq(0).text() + "",
-						"method": "DELETE",
-						"timeout": 0,
-					};
-					console.log("https://nbiotwater.herokuapp.com/web/delete/" + click_item.eq(0).text() + "");
-					$.ajax(settings).done(function (response) {
-						console.log(response);
-					});
-					window.alert("已成功刪除");
-				});
-			});
-			},
-		});
-// 		$.getJSON(url, function (result) {
-
-// 			$.each(result, function (index, value) {
+// 		$.ajax({
+// 			url: url,
+// 			type: "GET",
+// 			dataType: "json",
+// 			success: function(result) {
+// 			    $.each(result, function (index, value) {
 // 				console.log(index, value);
 // 				var insertHTML = "";
 // 				insertHTML += `
@@ -247,7 +186,7 @@
 // 					var click_item = $(e.target).parents("tr").children('td');
 // 					console.log("in_dd2");
 // 					var settings = {
-// 						"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
+// 						"url": "https://nbiotwater.herokuapp.com/web/delete/" + click_item.eq(0).text() + "",
 // 						"method": "DELETE",
 // 						"timeout": 0,
 // 					};
@@ -258,7 +197,68 @@
 // 					window.alert("已成功刪除");
 // 				});
 // 			});
+// 			},
 // 		});
+		$.getJSON(url, function (result) {
+
+			$.each(result, function (index, value) {
+				console.log(index, value);
+				var insertHTML = "";
+				insertHTML += `
+					<tr>
+						<td>`+ value.userId + `</td>
+						<td>`+ value.deviceId + `</td>
+						<td>`+ value.address + `</td>
+						<td>`+ value.url + `</td>
+						<td>`+ value.accessToken + `</td>
+						
+						<td>
+							<a id="swe" href="#editEmployeeModal" class="edit" data-toggle="modal"><i
+								class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+							<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i
+								class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+						</td>
+					</tr>`
+					;
+				$("#Merchant_list").append(insertHTML);
+			});
+			//編輯
+			$(".edit").click(function (e) {
+				var click_item = $(e.target).parents("tr").children('td');
+				console.log("in_ed");
+
+				$("#edit_u_id").val(click_item.eq(0).text());
+				$("#edit_d_id").val(click_item.eq(1).text());
+				$("#edit_address").val(click_item.eq(2).text());
+				$("#edit_url").val(click_item.eq(3).text());
+				$("#edit_name").val(click_item.eq(4).text());
+				//$("#edit_site").val(click_item.eq(5).text());
+				$.each(click_item.parents("td"), function (index, value) {
+					console.log(value.text());
+				});
+				$("#edit_save_btn").click(function () {
+					edit_funiture(click_item);
+				});
+			});
+			//刪除
+			$(".delete").click(function (e) {
+				console.log("in_dd");
+				$("#delete_confirm_btn").click(function () {
+					var click_item = $(e.target).parents("tr").children('td');
+					console.log("in_dd2");
+					var settings = {
+						"url": "https://faaf-114-36-252-10.jp.ngrok.io/web/delete/" + click_item.eq(0).text() + "",
+						"method": "DELETE",
+						"timeout": 0,
+					};
+					console.log("https://nbiotwater.herokuapp.com/web/delete/" + click_item.eq(0).text() + "");
+					$.ajax(settings).done(function (response) {
+						console.log(response);
+					});
+					window.alert("已成功刪除");
+				});
+			});
+		});
 	}
 	function delete_funiture() {
 		window.alert(click_item.eq(0).text());
